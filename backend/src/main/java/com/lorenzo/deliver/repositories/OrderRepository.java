@@ -11,6 +11,6 @@ import com.lorenzo.deliver.entities.Order;
 @Repository
 public interface OrderRepository extends JpaRepository<Order,Long>{
 
-	@Query(nativeQuery = true, value = "SELECT * FROM tb_order WHERE status LIKE 0 ORDER BY moment ASC")
+	@Query(nativeQuery = true, value = "SELECT * FROM tb_order WHERE status = 0 ORDER BY moment ASC")
 	List<Order> findPendingOrders();
 }
