@@ -42,7 +42,7 @@ public class Order implements Serializable{
 				joinColumns = @JoinColumn(name = "order_id"), // CLASSE ONDE EU ESTOU
 				inverseJoinColumns = @JoinColumn(name = "product_id")
 			)
-	private Set<Order> products = new HashSet<>();
+	private Set<Product> products = new HashSet<>();
 	
 	public Order() {}
 
@@ -115,7 +115,7 @@ public class Order implements Serializable{
 	}
 	
 
-	public Set<Order> getProducts() {
+	public Set<Product> getProducts() {
 		return products;
 	}
 

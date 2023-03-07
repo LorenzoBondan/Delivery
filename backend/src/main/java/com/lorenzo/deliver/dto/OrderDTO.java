@@ -2,9 +2,10 @@ package com.lorenzo.deliver.dto;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.lorenzo.deliver.entities.Order;
 import com.lorenzo.deliver.entities.enums.OrderStatus;
@@ -21,8 +22,8 @@ public class OrderDTO implements Serializable {
 	private OrderStatus status;
 	private Double total;
 	
-	private Set<Order> products = new HashSet<>();
-
+	private List<ProductDTO> products = new ArrayList<>();
+	
 	public OrderDTO() {}
 
 	public OrderDTO(Long id, String address, Double latitude, Double longitude, Instant moment, OrderStatus status,
@@ -45,8 +46,15 @@ public class OrderDTO implements Serializable {
 		this.moment = entity.getMoment();
 		this.status = entity.getStatus();
 		this.total = entity.getTotal();
+		
+		this.products = entity.getProducts().stream().map(x -> new ProductDTO(x)).collect(Collectors.toList());
 	}
 	
+	// DTO QUE RECEBE OS PRODUTOS -> VÃO PRA AQUELA LISTA DE CIMA
+	//public OrderDTO(Order entity, List<Product> products) {
+		//this(entity);
+		//products.forEach(p -> this.products.add(new ProductDTO(p)));
+	//}
 	
 
 	public Long getId() {
@@ -105,7 +113,7 @@ public class OrderDTO implements Serializable {
 		this.total = total;
 	}
 
-	public Set<Order> getProducts() {
+	public List<ProductDTO> getProducts() {
 		return products;
 	}
 
