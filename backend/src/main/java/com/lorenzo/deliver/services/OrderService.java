@@ -4,6 +4,8 @@ import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,6 +39,19 @@ public class OrderService {
 		copyDtoToEntity(dto, entity);
 		entity = repository.save(entity);
 		return new OrderDTO(entity);
+	}
+	
+	@Transactional
+	public OrderDTO updateStatus(Long id, OrderDTO dto) throws Exception {
+		try {
+			Order entity = repository.getOne(id);
+			entity.setStatus(OrderStatus.DELIVERED);
+			entity = repository.save(entity);
+			return new OrderDTO(entity);
+		}
+		catch (EntityNotFoundException e) {
+			throw new Exception("Id not found " + id);
+		}
 	}
 	
 	
