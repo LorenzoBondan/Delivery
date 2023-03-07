@@ -1,0 +1,32 @@
+.home-container{
+    padding: 160px 220px 280px 220px;
+    background: white;
+}
+
+.home-content-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-content-text h1{
+    width: 450px;
+    font-size: 55px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.home-content-text p{
+    width: 550px;
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.home-content-text button{
+    height: 70px;
+    width: 235px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
