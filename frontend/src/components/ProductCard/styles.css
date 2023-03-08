@@ -4,6 +4,10 @@
     height: 463px;
 }
 
+.product-card-container:hover{
+    transform: scale(1.01);
+}
+
 .product-card-top-container {
     border-bottom: 1px solid #E6E6E6;
     margin-bottom: 10px;
