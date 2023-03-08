@@ -1,0 +1,14 @@
+.order-location-container {
+    padding: 15px;
+    margin-top: 35px;
+    width: 1000px;
+    height: 437px;
+}
+
+.order-location-container h3 {
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    color: #9E9E9E;
+    margin-bottom: 20px;
+}

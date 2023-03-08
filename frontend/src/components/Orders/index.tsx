@@ -1,12 +1,11 @@
 
 import { AxiosRequestConfig } from 'axios';
+import OrderLocation from 'components/OrderLocation';
 import ProductCard from 'components/ProductCard';
 import { useCallback, useEffect, useState } from 'react';
 import { Product } from 'types/product';
 import { requestBackend } from 'utils/requests';
 import './styles.css';
-
-
 
 const Orders = () => {
 
@@ -16,10 +15,6 @@ const Orders = () => {
         const params : AxiosRequestConfig = {
           method:"GET",
           url: "/products",
-          params: {
-            page: 0,
-            size: 80,
-          },
         }
     
         requestBackend(params) // função criada no requests.ts
@@ -47,7 +42,6 @@ const Orders = () => {
             </div>
 
             <div className='orders-products-container'>
-
                 <div className='orders-list-products'>
 
                     {products
@@ -58,7 +52,9 @@ const Orders = () => {
                         )
                     }
                 </div>
-                
+
+                <OrderLocation/>
+
             </div>
 
         </div>
