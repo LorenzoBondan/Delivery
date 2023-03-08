@@ -1,5 +1,6 @@
 import Footer from "components/Footer";
 import Navbar from "components/Navbar";
+import Orders from "components/Orders";
 import Home from "pages/Home";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -14,8 +15,8 @@ const Routes = () => {
                     <Home/>
                 </Route>
 
-                <Route path="/products" exact>
-                    <Home/>
+                <Route path="/orders" exact>
+                    <Orders/>
                 </Route>
 
             </Switch>

@@ -1,0 +1,49 @@
+.orders-nav{
+    height: 133px;
+    background: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.orders-nav h1{
+    width: 150px;
+    font-weight: 700;
+    font-size: 36px;    
+    color: #DA5C5C;
+    letter-spacing: -0.015em;
+    margin-bottom: 0;
+}
+
+.orders-nav h2{
+    font-weight: 700;
+    font-size: 24px;    
+    color: #DA5C5C;
+    letter-spacing: -0.015em;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.orders-nav p{
+    font-weight: 400;
+    font-size: 18px;    
+    color: #9E9E9E;
+    letter-spacing: -0.015em;
+    margin-left: 12px;
+    margin-bottom: 0px;
+}
+
+.orders-nav-banner{
+    width: 410px;
+    height: 60px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    background: #DA5C5C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
