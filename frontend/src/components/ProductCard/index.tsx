@@ -5,11 +5,13 @@ import './styles.css';
 
 type Props = {
     product: Product;
+    onSelectProduct: (product: Product) => void;
+    isSelected: boolean;
 }
 
-const ProductCard = ({product} : Props) => {
+const ProductCard = ({product, onSelectProduct, isSelected} : Props) => {
     return(
-        <div className='product-card-container base-card'>
+        <div className={`product-card-container base-card ${isSelected ? 'selected' : ''}`} onClick={() => onSelectProduct(product)}>
             <div className='product-card-top-container'>
                 <h2>{product.name}</h2>
                 <img src={product.imgUrl} alt="" />

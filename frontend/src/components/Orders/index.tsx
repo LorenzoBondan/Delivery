@@ -1,16 +1,20 @@
 
 import { AxiosRequestConfig } from 'axios';
 import OrderLocation from 'components/OrderLocation';
+import OrderSummary from 'components/OrderSummary';
 import ProductCard from 'components/ProductCard';
+import ProductsList from 'components/ProductsList';
 import { useCallback, useEffect, useState } from 'react';
 import { OrderLocationData } from 'types/orderLocationData';
 import { Product } from 'types/product';
 import { requestBackend } from 'utils/requests';
+import { checkIsSelected } from './helpers';
 import './styles.css';
 
 const Orders = () => {
 
     const [products, setProducts] = useState<Product[]>([]);
+    const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
 
     const [orderLocation, setOrderLocation] = useState<OrderLocationData>(); 
 
@@ -30,6 +34,19 @@ const Orders = () => {
         getProducts();
       }, [getProducts]);
 
+
+      const handleSelectProduct = (product: Product) => {
+        const isAlreadySelected = checkIsSelected(selectedProducts, product);
+      
+        if (isAlreadySelected) {
+          const selected = selectedProducts.filter(item => item.id !== product.id);
+          setSelectedProducts(selected);
+        } else {
+          setSelectedProducts(previous => [...previous, product]);
+        }
+      }
+      
+
     return(
         <div className='orders-container'>
 
@@ -45,18 +62,12 @@ const Orders = () => {
             </div>
 
             <div className='orders-products-container'>
-                <div className='orders-list-products'>
-
-                    {products
-                        .sort((a,b) => a.name > b.name ? 1 : -1)
-                        .map(product => (
-                            <ProductCard product={product} key={product.id}/>
-                            )
-                        )
-                    }
-                </div>
+                
+                <ProductsList products={products} onSelectProduct={handleSelectProduct} selectedProducts={selectedProducts}/>
 
                 <OrderLocation onChangeLocation={location => setOrderLocation(location)}/>
+
+                <OrderSummary/>
 
             </div>
 

@@ -1,0 +1,36 @@
+.order-summary-container{
+    margin-top: 30px;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: #DA5C5C;
+    border-radius: 10px;
+    color: white;
+
+    width: 1000px;
+    height: 73px;
+}
+
+.order-summary-text-container h4{
+    font-weight: 400;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.order-summary-button-zone button{
+    width: 222px;
+    height: 46px;
+    color: #DA5C5C;
+    background-color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.order-summary-button-zone button:hover{
+    background-color: white;
+    color: #DA5C5C;
+    transform: scale(1.05);
+}
