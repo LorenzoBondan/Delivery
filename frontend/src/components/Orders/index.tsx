@@ -7,7 +7,7 @@ import ProductsList from 'components/ProductsList';
 import { useCallback, useEffect, useState } from 'react';
 import { OrderLocationData } from 'types/orderLocationData';
 import { Product } from 'types/product';
-import { requestBackend } from 'utils/requests';
+import { requestBackend, saveOrder } from 'utils/requests';
 import { checkIsSelected } from './helpers';
 import './styles.css';
 
@@ -17,6 +17,10 @@ const Orders = () => {
     const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
 
     const [orderLocation, setOrderLocation] = useState<OrderLocationData>(); 
+
+    const totalPrice = selectedProducts.reduce((sum, item) => {
+        return sum + item.price;
+      }, 0);
 
     const getProducts = useCallback(() => {
         const params : AxiosRequestConfig = {
@@ -45,7 +49,20 @@ const Orders = () => {
           setSelectedProducts(previous => [...previous, product]);
         }
       }
+
+      const handleSubmit = () => {
+        const productsIds = selectedProducts.map(({ id }) => ({ id }));
+        const payload = {
+          ...orderLocation!,
+          products: productsIds
+        }
       
+        saveOrder(payload).then((response) => {
+          setSelectedProducts([]);
+          console.log(`Pedido enviado com sucesso! N° ${response.data.id}` )
+        })
+      }
+
 
     return(
         <div className='orders-container'>
@@ -67,7 +84,11 @@ const Orders = () => {
 
                 <OrderLocation onChangeLocation={location => setOrderLocation(location)}/>
 
-                <OrderSummary/>
+                <OrderSummary 
+                    amount={selectedProducts.length} 
+                    totalPrice={totalPrice}
+                    onSubmit={handleSubmit}
+                />
 
             </div>
 
