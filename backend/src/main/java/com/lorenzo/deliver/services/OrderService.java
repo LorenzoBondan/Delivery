@@ -61,7 +61,6 @@ public class OrderService {
 		entity.setLongitude(dto.getLongitude());
 		entity.setMoment(Instant.now());
 		entity.setStatus(OrderStatus.PENDING);
-		entity.setTotal(dto.getTotal());
 		
 		for(ProductDTO prodDTO : dto.getProducts() ) {
 			Product product = productRepository.getOne(prodDTO.getId());

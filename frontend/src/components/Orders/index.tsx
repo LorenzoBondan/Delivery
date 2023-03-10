@@ -2,7 +2,6 @@
 import { AxiosRequestConfig } from 'axios';
 import OrderLocation from 'components/OrderLocation';
 import OrderSummary from 'components/OrderSummary';
-import ProductCard from 'components/ProductCard';
 import ProductsList from 'components/ProductsList';
 import { useCallback, useEffect, useState } from 'react';
 import { OrderLocationData } from 'types/orderLocationData';
