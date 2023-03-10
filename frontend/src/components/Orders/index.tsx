@@ -3,6 +3,7 @@ import { AxiosRequestConfig } from 'axios';
 import OrderLocation from 'components/OrderLocation';
 import ProductCard from 'components/ProductCard';
 import { useCallback, useEffect, useState } from 'react';
+import { OrderLocationData } from 'types/orderLocationData';
 import { Product } from 'types/product';
 import { requestBackend } from 'utils/requests';
 import './styles.css';
@@ -10,6 +11,8 @@ import './styles.css';
 const Orders = () => {
 
     const [products, setProducts] = useState<Product[]>([]);
+
+    const [orderLocation, setOrderLocation] = useState<OrderLocationData>(); 
 
     const getProducts = useCallback(() => {
         const params : AxiosRequestConfig = {
@@ -53,7 +56,7 @@ const Orders = () => {
                     }
                 </div>
 
-                <OrderLocation/>
+                <OrderLocation onChangeLocation={location => setOrderLocation(location)}/>
 
             </div>
 

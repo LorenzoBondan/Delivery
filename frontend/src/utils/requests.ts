@@ -10,3 +10,10 @@ export const requestBackend = (config : AxiosRequestConfig) => {
 
     return axios({...config, baseURL: BASE_URL, headers});
 }
+
+const mapboxToken = '';
+
+export function fetchLocalMapBox(local: string){
+    return axios(`https://api.mapbox.com/geocoding/v5/mapbox.places/${local}.json?access_token=${mapboxToken}`);
+}
+
